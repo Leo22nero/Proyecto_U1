@@ -1,4 +1,11 @@
 import javax.swing.*;
+import javax.swing.JFrame;
+import java.awt.Container;
+import javax.swing.JRadioButton;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 
 public class Ventana extends JFrame {
    private JButton btns[];
