@@ -8,16 +8,27 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 
 public class Ventana extends JFrame {
-   private JButton btns[];
-    private JComboBox chamarras;
-    private JRadioButton talla, chica,mediana,grande;
-   private JCheckBox envio, carrito;
-   private JTextArea pedido;
-   private JButton extra, agregar, limpiar;
-   
    private Container contenedor;
    
    public Ventana(){
-
         super("Tienda de Chamarras");
 }
+
+   //Pagar las compras u informar que hace falta seleccionar alguna chamarra
+   public void pagar(){
+
+        if(total == 0){
+            JOptionPane.showMessageDialog(this,"El carrito está vacío");
+        }else{
+            JOptionPane.showMessageDialog(this,"Tu pago fue exitoso");
+            limpiar();
+         }
+   }
+//limpia las compras que se hayan seleccionado por error 
+    public void limpiar(){
+
+        carrito.setText("");
+        total = 0;
+        totalDin.setText("Total: $0");
+
+    }
