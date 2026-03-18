@@ -12,6 +12,7 @@ public class Ventana extends JFrame {
     private JPanel panelNOR, panelEST, panelOES, panelSUR;
     private JButton btns[];
     private int total = 0;
+    private JLabel titulo;
 
     //Lista del carrito
     private List<String> carrito = new ArrayList<>();
@@ -24,7 +25,7 @@ public class Ventana extends JFrame {
 
     //Inicio del Cosntructor
     public Ventana(){
-        super("Proyecto 2");
+        super("Proyecto 1");
         setLayout(new BorderLayout(5,5));
 
         initNOR();
@@ -35,9 +36,14 @@ public class Ventana extends JFrame {
     private void initNOR() {
         panelNOR = new JPanel(new BorderLayout());
         panelNOR.setBorder(BorderFactory.createTitledBorder("SUDADERAS"));
+        panelNOR.setBackground(Color.BLACK);
 
-        panelNOR.add(new JLabel("TIENDA DE SUDADERAS",
-                SwingConstants.CENTER), BorderLayout.CENTER);
+        JLabel titulo = new JLabel("TIENDA DE SUDADERAS", SwingConstants.CENTER);
+        titulo.setFont(new Font("Arial", Font.BOLD, 28));
+        titulo.setForeground(Color.BLACK);
+        titulo.setOpaque(true);
+        titulo.setBackground(Color.WHITE);
+        panelNOR.add(titulo, BorderLayout.CENTER);
 
         add(panelNOR, BorderLayout.NORTH);
     }
