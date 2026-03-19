@@ -13,8 +13,10 @@ public class Ventana extends JFrame {
     private int total = 0;
     private JLabel titulo;
 
-    //Lista del carrito
-    private List<String> carrito = new ArrayList<>();
+      //Lista del carrito
+    private DefaultListModel<String> modeloLista;
+    private JList<String> listaCarrito;
+    private JLabel lblTotal;
 
 
 
@@ -22,7 +24,7 @@ public class Ventana extends JFrame {
     private final String nombres[] = {"MODELO 1", "MODELO 2", " MODELO 3", "MODELO 4"};
 
 
-    //Inicio del Cosntructor
+    //Inicio del Constructor
     public Ventana(){
         super("Proyecto 1");
         setLayout(new BorderLayout(5,5));
@@ -30,9 +32,28 @@ public class Ventana extends JFrame {
         initNOR();
         initEST();
         initOES();
+        initCarrito();
     }
+    private void initCarrito() {
 
-    private void initNOR() {
+    modeloLista = new DefaultListModel<>();
+    listaCarrito = new JList<>(modeloLista);
+
+    JScrollPane scroll = new JScrollPane(listaCarrito);
+    scroll.setPreferredSize(new Dimension(200, 0));
+
+    JPanel panelCarrito = new JPanel(new BorderLayout());
+    panelCarrito.setBorder(BorderFactory.createTitledBorder("CARRITO"));
+
+    lblTotal = new JLabel("Total: $0");
+    lblTotal.setHorizontalAlignment(JLabel.CENTER);
+
+    panelCarrito.add(scroll, BorderLayout.CENTER);
+    panelCarrito.add(lblTotal, BorderLayout.SOUTH);
+
+    add(panelCarrito, BorderLayout.EAST);
+}
+private void initNOR() {
         panelNOR = new JPanel(new BorderLayout());
         panelNOR.setBorder(BorderFactory.createTitledBorder("SUDADERAS"));
         panelNOR.setBackground(Color.BLACK);
@@ -60,13 +81,13 @@ public class Ventana extends JFrame {
     }
 
     private void initOES() {
+        modeloLista = new DefaultListModel<>();
+listaCarrito = new JList<>(modeloLista);
 
+JScrollPane scroll = new JScrollPane(listaCarrito);
+scroll.setPreferredSize(new Dimension(200, 300));
 
-        /*
-        Falta darle mas espacio al panel Oeste
-        Falta hacerlo carrito y acomodar el boton de finalizar al ultimo
-        Falta hacer visible la lista de lo que se va agregando
-         */
+add(scroll, BorderLayout.EAST);
 
         panelOES = new JPanel(new GridLayout(2,2,10,10));
         panelOES.setBorder(BorderFactory.createTitledBorder("PRODUCTOS"));
