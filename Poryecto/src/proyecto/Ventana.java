@@ -3,6 +3,18 @@ package proyecto;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import java.util.List;
 import javax.swing.*;
 
@@ -14,8 +26,10 @@ public class Ventana extends JFrame {
     private int total = 0;
     private JLabel titulo;
 
-    //Lista del carrito
-    private List<String> carrito = new ArrayList<>();
+      //Lista del carrito
+    private DefaultListModel<String> modeloLista;
+    private JList<String> listaCarrito;
+    private JLabel lblTotal;
 
 
 
@@ -23,30 +37,35 @@ public class Ventana extends JFrame {
     private final String nombres[] = {"MODELO 1", "MODELO 2", " MODELO 3", "MODELO 4"};
 
 
-    //Inicio del Cosntructor
+    //Inicio del Constructor
     public Ventana(){
         super("Proyecto 1");
         setLayout(new BorderLayout(5,5));
 
-        initNOR();
+        //initNOR();
         initEST();
         initOES();
+        initCarrito();
     }
+    private void initCarrito() {
 
-    private void initNOR() {
-        panelNOR = new JPanel(new BorderLayout());
-        panelNOR.setBorder(BorderFactory.createTitledBorder("SUDADERAS"));
-        panelNOR.setBackground(Color.BLACK);
+    modeloLista = new DefaultListModel<>();
+    listaCarrito = new JList<>(modeloLista);
 
-        JLabel titulo = new JLabel("TIENDA DE SUDADERAS", SwingConstants.CENTER);
-        titulo.setFont(new Font("Arial", Font.BOLD, 28));
-        titulo.setForeground(Color.BLACK);
-        titulo.setOpaque(true);
-        titulo.setBackground(Color.WHITE);
-        panelNOR.add(titulo, BorderLayout.CENTER);
+    JScrollPane scroll = new JScrollPane(listaCarrito);
+    scroll.setPreferredSize(new Dimension(200, 0));
 
-        add(panelNOR, BorderLayout.NORTH);
-    }
+    JPanel panelCarrito = new JPanel(new BorderLayout());
+    panelCarrito.setBorder(BorderFactory.createTitledBorder("CARRITO"));
+
+    lblTotal = new JLabel("Total: $0");
+    lblTotal.setHorizontalAlignment(JLabel.CENTER);
+
+    panelCarrito.add(scroll, BorderLayout.CENTER);
+    panelCarrito.add(lblTotal, BorderLayout.SOUTH);
+
+    add(panelCarrito, BorderLayout.EAST);
+}
 
     private void initEST() {
 
@@ -61,6 +80,16 @@ public class Ventana extends JFrame {
     }
 
     private void initOES() {
+        modeloLista = new DefaultListModel<>();
+listaCarrito = new JList<>(modeloLista);
+
+JScrollPane scroll = new JScrollPane(listaCarrito);
+scroll.setPreferredSize(new Dimension(200, 300));
+
+add(scroll, BorderLayout.EAST);
+
+lblTotal = new JLabel("Total: $0");
+add(lblTotal, BorderLayout.SOUTH);
 
 
         /*
