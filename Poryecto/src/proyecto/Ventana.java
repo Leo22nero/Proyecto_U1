@@ -1,7 +1,6 @@
 package proyecto;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.ArrayList;
 import java.awt.Dimension;
 import java.awt.Color;
@@ -138,7 +137,7 @@ add(lblTotal, BorderLayout.SOUTH);
         JLabel sud3 = new JLabel(new ImageIcon(getClass().getResource("sudadera3.jpg")));
         pane3.add(sud3, BorderLayout.CENTER);
         JPanel desc3 = new JPanel(new GridLayout(4,1));
-        desc3.add(new JLabel(" Sudadera Dis Anime"));
+        desc3.add(new JLabel(" Sudadera de Anime"));
         desc3.add(new JLabel("$780"));
         JComboBox<String> talla3 = new JComboBox<>(tallas);
         desc3.add(talla3);
