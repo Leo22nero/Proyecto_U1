@@ -48,7 +48,9 @@ public class VentanaPago extends JFrame {
                 public void actionPerformed(ActionEvent e) {
 
                     if (op.equals("LIMPIAR CARRITO")) {
+                     
                         totalP.setText("TOTAL A PAGAR: $0");
+                      
                     }
 
                     if (op.equals("PAGAR TOTAL")) {

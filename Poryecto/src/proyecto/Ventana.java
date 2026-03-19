@@ -2,18 +2,6 @@ package proyecto;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Dimension;
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import java.util.List;
 import javax.swing.*;
 
@@ -41,7 +29,7 @@ public class Ventana extends JFrame {
         super("Proyecto 1");
         setLayout(new BorderLayout(5,5));
 
-        //initNOR();
+        initNOR();
         initEST();
         initOES();
         initCarrito();
@@ -65,6 +53,20 @@ public class Ventana extends JFrame {
 
     add(panelCarrito, BorderLayout.EAST);
 }
+private void initNOR() {
+        panelNOR = new JPanel(new BorderLayout());
+        panelNOR.setBorder(BorderFactory.createTitledBorder("SUDADERAS"));
+        panelNOR.setBackground(Color.BLACK);
+
+        JLabel titulo = new JLabel("TIENDA DE SUDADERAS", SwingConstants.CENTER);
+        titulo.setFont(new Font("Arial", Font.BOLD, 28));
+        titulo.setForeground(Color.BLACK);
+        titulo.setOpaque(true);
+        titulo.setBackground(Color.WHITE);
+        panelNOR.add(titulo, BorderLayout.CENTER);
+
+        add(panelNOR, BorderLayout.NORTH);
+    }
 
     private void initEST() {
 
@@ -86,16 +88,6 @@ JScrollPane scroll = new JScrollPane(listaCarrito);
 scroll.setPreferredSize(new Dimension(200, 300));
 
 add(scroll, BorderLayout.EAST);
-
-lblTotal = new JLabel("Total: $0");
-add(lblTotal, BorderLayout.SOUTH);
-
-
-        /*
-        Falta darle mas espacio al panel Oeste
-        Falta hacerlo carrito y acomodar el boton de finalizar al ultimo
-        Falta hacer visible la lista de lo que se va agregando
-         */
 
         panelOES = new JPanel(new GridLayout(2,2,10,10));
         panelOES.setBorder(BorderFactory.createTitledBorder("PRODUCTOS"));
