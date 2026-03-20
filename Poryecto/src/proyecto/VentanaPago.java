@@ -3,7 +3,6 @@ package proyecto;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class VentanaPago extends JFrame {
 
@@ -11,7 +10,6 @@ public class VentanaPago extends JFrame {
     private JLabel totalP;
     private int total;
 
-    //Constructor
     public VentanaPago(int total) {
         super("Ventana de Pago");
 
@@ -45,7 +43,16 @@ public class VentanaPago extends JFrame {
         panelEST.add(totalP);
         panelEST.add(Box.createVerticalStrut(40));
 
-        // PANEL BOTONES (FlowLayout para que sean pequeños)
+        // 🔥 ACCIÓN PAGAR (REUTILIZABLE)
+        Action pagarAction = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Pago realizado");
+                dispose();
+            }
+        };
+
+        // PANEL BOTONES
         JPanel panelBotones = new JPanel();
         panelBotones.setBackground(new Color(20, 20, 20));
         panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 0));
@@ -56,37 +63,31 @@ public class VentanaPago extends JFrame {
 
             JButton btn = new JButton(op);
 
-            btn.setPreferredSize(new Dimension(110, 35)); // 🔹 tamaño pequeño
+            btn.setPreferredSize(new Dimension(110, 35));
             btn.setFocusPainted(false);
             btn.setForeground(Color.WHITE);
             btn.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
-            // Colores
             if (op.equals("PAGAR")) {
                 btn.setBackground(new Color(170, 110, 70));
+                btn.addActionListener(pagarAction);
             } else {
                 btn.setBackground(new Color(90, 70, 50));
+                btn.addActionListener(e -> totalP.setText("TOTAL: $0"));
             }
-
-            btn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    if (op.equals("LIMPIAR")) {
-                        totalP.setText("TOTAL: $0");
-                    }
-
-                    if (op.equals("PAGAR")) {
-                        JOptionPane.showMessageDialog(null, "Pago realizado");
-                        dispose();
-                    }
-                }
-            });
 
             panelBotones.add(btn);
         }
 
         panelEST.add(panelBotones);
+
+        // Ctrl + P
+        KeyStroke ctrlP = KeyStroke.getKeyStroke("control P");
+
+        panelEST.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(ctrlP, "pagar");
+
+        panelEST.getActionMap().put("pagar", pagarAction);
 
         add(panelEST);
         setVisible(true);
