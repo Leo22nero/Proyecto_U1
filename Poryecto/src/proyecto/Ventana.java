@@ -1,4 +1,5 @@
 package proyecto;
+//@author Leonardo Estrada, Mariana Correa, Ana Laura Gervacio, Julia Ruiz, Lissandro Perez.
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -113,7 +114,7 @@ public class Ventana extends JFrame {
 
         String tallas[] = {"S", "M", "L"};
 
-        // -------- SUDADERA 1 --------
+        //sud1
         JPanel pan1 = new JPanel(new BorderLayout());
         JLabel img1 = new JLabel(new ImageIcon(getClass().getResource("sudadera1.jpg")));
         pan1.add(img1, BorderLayout.CENTER);
@@ -139,7 +140,7 @@ public class Ventana extends JFrame {
 
         talla1.setSelectedIndex(0);
 
-        // -------- SUDADERA 2 --------
+        //sud2
         JPanel pan2 = new JPanel(new BorderLayout());
         JLabel img2 = new JLabel(new ImageIcon(getClass().getResource("sudadera2.jpg")));
         pan2.add(img2, BorderLayout.CENTER);
@@ -165,7 +166,7 @@ public class Ventana extends JFrame {
 
         talla2.setSelectedIndex(0);
 
-        // -------- SUDADERA 3 --------
+        //sud3
         JPanel pan3 = new JPanel(new BorderLayout());
         JLabel img3 = new JLabel(new ImageIcon(getClass().getResource("sudadera3.jpg")));
         pan3.add(img3, BorderLayout.CENTER);
@@ -191,7 +192,7 @@ public class Ventana extends JFrame {
 
         talla3.setSelectedIndex(0);
 
-        // -------- SUDADERA 4 --------
+        //sud4
         JPanel pan4 = new JPanel(new BorderLayout());
         JLabel img4 = new JLabel(new ImageIcon(getClass().getResource("sudadera4.jpg")));
         pan4.add(img4, BorderLayout.CENTER);
