@@ -43,7 +43,7 @@ public class VentanaPago extends JFrame {
         panelEST.add(totalP);
         panelEST.add(Box.createVerticalStrut(40));
 
-        // 🔥 ACCIÓN PAGAR (REUTILIZABLE)
+    
         Action pagarAction = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
