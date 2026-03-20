@@ -1,4 +1,5 @@
 package proyecto;
+//@author Leonardo Estrada, Mariana Correa, Ana Laura Gervacio, Julia Ruiz, Lissandro Perez.
 
 import javax.swing.*;
 import java.awt.*;
