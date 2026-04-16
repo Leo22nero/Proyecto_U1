@@ -96,6 +96,42 @@ public class Ventana extends JFrame {
         panelNOR.add(titulo, BorderLayout.CENTER);
         add(panelNOR, BorderLayout.NORTH);
     }
+    
+private JProgressBar Envio;
+private JLabel promo;
+
+private JPanel PanelPromocion() {
+    JPanel panel = new JPanel();
+    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    panel.setOpaque(false);
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+    promo = new JLabel("¡Añade mas productos para envío gratis!");
+    promo.setForeground(new Color(240, 184, 216));
+    promo.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+    Envio = new JProgressBar(0, 1500);
+    Envio.setValue(0);
+    Envio.setPreferredSize(new Dimension(300, 20));
+    Envio.setForeground(new Color(198, 251, 172)); // para que cambie de color
+    Envio.setStringPainted(true); // Muestra el porcentaje
+
+    panel.add(promo);
+    panel.add(Box.createVerticalStrut(5));
+    panel.add(Envio);
+
+    return panel;
+}
+
+private void Barra() {
+    Envio.setValue(total);
+    if (total >= 1500) {
+        promo.setText("¡FELICIDADES! Obtuviste un envío gratis");
+        Envio.setForeground(new Color(100, 255, 100));
+    } else {
+        promo.setText("Faltan $" + (1500 - total) + " para envío gratis");
+    }
+}
 
     private void initEST() {
         Font fuente2 = null;
@@ -137,6 +173,7 @@ public class Ventana extends JFrame {
             listaCarrito.setText("");
             total=0;
             lblTotal.setText("TOTAL: $" + total);
+             Barra();
         });
 
         btnFinalizar.setPreferredSize(new Dimension(100, 40));
@@ -188,6 +225,7 @@ public class Ventana extends JFrame {
 
         descr1.add(sudadera1);
         descr1.add(new JLabel("$"+precio1));
+         Barra();
 
         String tallas[] = {"S","M","L"};
 
@@ -212,6 +250,7 @@ public class Ventana extends JFrame {
                 listaCarrito.append(nombre + " - Talla: " + talla + "\n");
                 total += precio1;
                 lblTotal.setText("TOTAL: $" + total);
+                 Barra();
             }
         });
 
@@ -224,6 +263,7 @@ public class Ventana extends JFrame {
         sudadera2.setFont(fuente);
         descr2.add(sudadera2);
         descr2.add(new JLabel("$"+precio2));
+         Barra();
 
         JComboBox<String> talla2 = new JComboBox<>(tallas);
         descr2.add(talla2);
@@ -246,6 +286,7 @@ public class Ventana extends JFrame {
                 listaCarrito.append(nombre + " - Talla: " + talla + "\n");
                 total += precio2;
                 lblTotal.setText("TOTAL: $" + total);
+                 Barra();
             }
         });
 
@@ -260,6 +301,7 @@ public class Ventana extends JFrame {
 
         desc3.add(sudadera3);
         desc3.add(new JLabel("$"+precio3));
+         Barra();
         JComboBox<String> talla3 = new JComboBox<>(tallas);
         desc3.add(talla3);
 
@@ -278,6 +320,7 @@ public class Ventana extends JFrame {
                 listaCarrito.append(nombre + " - Talla: " + talla + "\n");
                 total += precio3;
                 lblTotal.setText("TOTAL: $" + total);
+                 Barra();
             }
         });
 
@@ -293,6 +336,7 @@ public class Ventana extends JFrame {
 
         info4.add(sudadera4);
         info4.add(new JLabel("$"+precio4));
+         Barra();
         JComboBox<String> talla4 = new JComboBox<>(tallas);
 
         info4.add(talla4);
@@ -313,6 +357,7 @@ public class Ventana extends JFrame {
                 listaCarrito.append(nombre + " - Talla: " + talla + "\n");
                 total += precio4;
                 lblTotal.setText("TOTAL: $" + total);
+                 Barra();
 
             }
         });
